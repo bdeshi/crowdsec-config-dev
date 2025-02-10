@@ -1,0 +1,8 @@
+services:
+  crowdsec-dev:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - "./develop:/import:ro"
+      - "./results:/export"

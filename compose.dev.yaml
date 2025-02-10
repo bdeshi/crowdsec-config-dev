@@ -1,0 +1,19 @@
+services:
+  crowdsec-dev:
+    extends:
+      file: compose.yaml
+      service: crowdsec-dev
+    environment:
+      CONTAINER_LINGER: "true"
+    stdin_open: true
+    stop_grace_period: 1s
+    develop:
+      watch:
+        - path: ./develop
+          ignore:
+            - "**/*.md"
+          action: rebuild
+        - path: ./scripts
+          action: rebuild
+        - path: ./Dockerfile
+          action: rebuild
